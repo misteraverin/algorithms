@@ -1,7 +1,7 @@
 /*
 
 User: Maxim Averin
-mail: averin13@gmail.com
+mail: averin13@gmail.co
 
 */
 
