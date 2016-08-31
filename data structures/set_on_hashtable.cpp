@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
-
+ 
 using namespace std;
-
-const int N = (int) 1e7 + 33;
-
+ 
+const int N = (int) 1e6 + 33;
+ 
 struct Node {
     Node* next;
     Node* prev;
@@ -14,9 +14,9 @@ struct Node {
         this -> value = val;
     }
 };
-
+ 
 Node *h[N];
-
+ 
 bool check(int a) {
     int i = a % N;
     Node *cur = h[i];
@@ -26,8 +26,8 @@ bool check(int a) {
     }
     return false;
 }
-
-
+ 
+ 
 void add(int a) {
     int i = a % N;
     if (check(a)) return;
@@ -35,7 +35,7 @@ void add(int a) {
     while (cur -> next) cur = cur -> next;
     (Node*&)(cur -> next) = new Node(cur, NULL, a);
 }
-
+ 
 void cancel(int a) {
     int i = a % N;
     Node* cur = h[i];
@@ -46,7 +46,7 @@ void cancel(int a) {
         (Node *&)cur = NULL;
     }
 }
-
+ 
 int main() {
     char s[30];
     int a;

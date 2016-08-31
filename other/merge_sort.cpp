@@ -16,12 +16,12 @@ using namespace std;
 int n, k, a[MAXN], b[MAXN], c[MAXN];
 
 
-void merge(int low, int mid, int high){
-        int h,i,k;
+void merge(int low, int mid, int high){         
+        int h,i,k; 
         i = 0;
-        int pos1 = low;
+        int pos1 = low;      
         int pos2 = mid + 1;
-
+       
         while((pos1 <= mid)&&(pos2 <= high)){
           if(a[pos1] <= a[pos2]){
                     b[i] = a[pos1];
@@ -33,24 +33,24 @@ void merge(int low, int mid, int high){
                 }
                 i++;
         }
-
+        
         if(pos1 > mid){
             for(int j = pos2;j <= high; j++){
-                b[i] = a[j];
-                i++;
+                b[i] = a[j];                
+                i++;         
             }
         }
         else{
             for(int j = pos1; j <= mid; j++){
-                b[i] = a[j];
+                b[i] = a[j];                
                 i++;
             }
         }
-
+      
         for(int j = 0;j <= high - low; j++)
-              a[j + low] = b[j];
-
-
+              a[j + low] = b[j];             
+    
+       
 }
 
 
@@ -60,7 +60,7 @@ void mergesort(int l, int r){
     mid = (l + r) / 2;
     mergesort(l, mid);
     mergesort(mid + 1, r);
-    merge(l, mid, r);
+    merge(l, mid, r); 
   }
 }
 

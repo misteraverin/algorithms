@@ -1,20 +1,12 @@
-/*
-
-User: Maxim Averin
-mail: averin13@gmailР
-
-*/
-
-
 #include <bits/stdc++.h>
-
+ 
 typedef long long ll;
-
+ 
 using namespace std;
-
+ 
 const int N = (int) 1e6 + 33;
 const ll MOD = (ll) 1e9 + 7, P = 131;
-
+ 
 struct Node {
     Node* next;
     Node* prev;
@@ -25,9 +17,9 @@ struct Node {
         val = value;
     }
 };
-
+ 
 Node *h[N];
-
+ 
 void prepare(int a) {
     int i = a % N;
     for (Node *cur = h[i]; cur; cur = cur -> next) {
@@ -39,7 +31,7 @@ void prepare(int a) {
         }
     }
 }
-
+ 
 void show(int key) {
     int i = key % N;
     for (Node *cur = h[i]; cur; cur = cur -> next) {
@@ -50,14 +42,14 @@ void show(int key) {
     }
     cout << "none\n";
 }
-
+ 
 void add(pair <int, string> nw) {
     prepare(nw.first);
     Node *cur = h[nw.first % N];
     while (cur -> next) cur = cur -> next;
     (Node *&) cur -> next = new Node(cur, NULL, nw);
 }
-
+ 
 int has(string s) {
     ll p = 1;
     ll ret = 0;
@@ -67,13 +59,13 @@ int has(string s) {
     }
     return (int) ret;
 }
-
+ 
 void init() {
     for (int i = 0; i < N; ++i) {
         h[i] = new Node(NULL, NULL, make_pair(-1, ""));
     }
 }
-
+ 
 int main() {
     ios_base::sync_with_stdio(0);
     init();
