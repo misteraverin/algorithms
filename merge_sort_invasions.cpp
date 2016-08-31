@@ -9,16 +9,16 @@
 
 #define TASK_NAME "qsort"
 #define MAXN int(1e6) + 10
-                             
+
 using namespace std;
 int n, z, k, a[MAXN], b[MAXN], sum_invers = 0;
 
 
-void merge(int low, int high){        
+void merge(int low, int high){
         int mid = (low + high) / 2;
         int i = 0;
-        int pos1 = low;      
-        int pos2 = mid + 1;                  
+        int pos1 = low;
+        int pos2 = mid + 1;
         while((pos1 <= mid)&&(pos2 <= high)){
           if(a[pos1] <= a[pos2]){
                     sum_invers += pos2 - mid - 1;
@@ -27,38 +27,38 @@ void merge(int low, int high){
                 }
                 else{
                     b[i] = a[pos2];
-                    pos2++;                    
+                    pos2++;
                 }
           i++;
         }
-        
+
         if(pos1 > mid){
             for(int j = pos2;j <= high; j++){
-                b[i] = a[j];           
-                i++;         
+                b[i] = a[j];
+                i++;
             }
         }
         else{
             for(int j = pos1; j <= mid; j++){
-                b[i] = a[j];               
-                sum_invers += pos2 - mid - 1;           
+                b[i] = a[j];
+                sum_invers += pos2 - mid - 1;
                 i++;
             }
         }
-      
+
         for(int j = 0;j <= high - low; j++)
-              a[j + low] = b[j];             
-    
+              a[j + low] = b[j];
+
 }
 
-                   
+
 void mergesort(int l, int r){
-  int mid;  
+  int mid;
   if(l < r){
     mid = (l + r) / 2;
     mergesort(l, mid);
     mergesort(mid + 1, r);
-    merge(l, r); 
+    merge(l, r);
   }
 }
 
@@ -80,7 +80,7 @@ int main()
         fprintf(stderr, "%d%d%d-> ", z);
         for(int i = 0; i < n; i++)
           fprintf(stderr, "%d ",a[i]);
-        fprintf(stderr,"\n");                          
+        fprintf(stderr,"\n");
         mergesort(0, n - 1);
         if(sum == sum_invers)
            fprintf(stderr, "TEST\n");
